@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fady Mounir Zaghloul — IT & Security Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:#07090f;--surface:#0d1017;--border:rgba(255,255,255,0.07);--bh:rgba(255,255,255,0.13);
+      --accent:#3b82f6;--ad:#1d4ed8;--a2:#34d399;--a3:#f59e0b;--a4:#a78bfa;
+      --text:#e2e8f0;--muted:#64748b;--card:#0e1420;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+    /* scrollbar */
+    ::-webkit-scrollbar{width:4px;}
+    ::-webkit-scrollbar-track{background:var(--bg);}
+    ::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.4);border-radius:4px;}
+
+    /* cursor glow */
+    .cursor-glow{pointer-events:none;position:fixed;width:300px;height:300px;border-radius:50%;
+      background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);
+      transform:translate(-50%,-50%);z-index:0;transition:opacity 0.3s;top:0;left:0;}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0.9rem 3.5rem;
+      background:rgba(7,9,15,0.88);backdrop-filter:blur(24px);
+      border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.4rem;}
+    .nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;animation:navpulse 2.5s ease infinite;}
+    @keyframes navpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(59,130,246,0.5)}50%{opacity:0.7;box-shadow:0 0 0 5px rgba(59,130,246,0)}}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--a2);transition:width 0.3s;}
+    .nav-links a:hover{color:var(--a2);}
+    .nav-links a:hover::after{width:100%;}
+    .nav-cta{font-family:'DM Mono',monospace;font-size:0.72rem;padding:0.5rem 1.25rem;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;transition:all 0.2s;border:1px solid var(--accent);}
+    .nav-cta:hover{background:var(--ad);transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,130,246,0.4);}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:grid;place-items:center;padding:7rem 3.5rem 5rem;position:relative;overflow:hidden;}
+    .hero-canvas{position:absolute;inset:0;z-index:0;}
+    .hero-orb1{position:absolute;width:900px;height:900px;background:radial-gradient(circle,rgba(59,130,246,0.08) 0%,transparent 60%);top:50%;left:45%;transform:translate(-50%,-50%);pointer-events:none;}
+    .hero-orb2{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(52,211,153,0.05) 0%,transparent 60%);bottom:0;right:0;pointer-events:none;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.025) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;}
+
+    .hero-inner{position:relative;z-index:1;max-width:960px;text-align:center;}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--a2);border:1px solid rgba(52,211,153,0.22);padding:0.32rem 0.9rem;border-radius:100px;margin-bottom:1.8rem;animation:fadeUp 0.8s ease both;backdrop-filter:blur(8px);}
+    .badge-dot{width:5px;height:5px;border-radius:50%;background:var(--a2);animation:pulse 2s ease infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.6)}}
+
+    h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.03;letter-spacing:-0.035em;margin-bottom:0.5rem;animation:fadeUp 0.8s 0.1s ease both;}
+    h1 .ac{color:var(--accent);}
+    h1 .nm{display:block;}
+    .hero-role{font-family:'DM Mono',monospace;font-size:clamp(0.72rem,1.6vw,0.88rem);color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeUp 0.8s 0.2s ease both;}
+    .hero-desc{font-size:1.05rem;color:#94a3b8;max-width:580px;margin:0 auto 2.5rem;line-height:1.85;animation:fadeUp 0.8s 0.3s ease both;}
+
+    .hero-cta{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s 0.4s ease both;}
+    .btn{display:inline-flex;align-items:center;gap:0.55rem;padding:0.72rem 1.5rem;border-radius:9px;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.06em;text-decoration:none;transition:all 0.22s;border:1px solid transparent;position:relative;overflow:hidden;}
+    .btn::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.3s;}
+    .btn:hover::before{opacity:1;}
+    .btn svg{width:15px;height:15px;flex-shrink:0;}
+    .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+    .btn-primary::before{background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent);}
+    .btn-primary:hover{background:var(--ad);transform:translateY(-2px);box-shadow:0 12px 35px rgba(59,130,246,0.4);}
+    .btn-li{background:rgba(10,102,194,0.12);color:#7cb9f4;border-color:rgba(10,102,194,0.28);}
+    .btn-li:hover{background:rgba(10,102,194,0.22);border-color:rgba(10,102,194,0.55);transform:translateY(-2px);}
+    .btn-cr{background:rgba(255,107,0,0.1);color:#fdba74;border-color:rgba(255,107,0,0.22);}
+    .btn-cr:hover{background:rgba(255,107,0,0.2);border-color:rgba(255,107,0,0.45);transform:translateY(-2px);}
+
+    /* Stats bar */
+    .stats-bar{display:flex;margin-top:4rem;animation:fadeUp 0.8s 0.5s ease both;border:1px solid var(--border);border-radius:16px;overflow:hidden;backdrop-filter:blur(8px);background:rgba(255,255,255,0.02);}
+    .stat-item{flex:1;text-align:center;padding:1.4rem 1.5rem;position:relative;transition:background 0.3s;}
+    .stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:var(--border);}
+    .stat-item:hover{background:rgba(59,130,246,0.05);}
+    .stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--text);line-height:1;}
+    .stat-num em{color:var(--accent);font-style:normal;}
+    .stat-label{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.3rem;}
+
+    /* ── SHARED ── */
+    .sw{padding:6rem 3.5rem;max-width:1160px;margin:0 auto;}
+    .sl{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.75rem;}
+    .sl::after{content:'';flex:1;height:1px;background:var(--border);}
+    h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.7rem,3.5vw,2.4rem);letter-spacing:-0.025em;margin-bottom:2.5rem;line-height:1.1;}
+    .divider{height:1px;background:var(--border);}
+
+    /* ── SKILLS ── */
+    .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1.1rem;}
+    .sc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.3s;position:relative;overflow:hidden;}
+    .sc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.4),transparent);opacity:0;transition:opacity 0.3s;}
+    .sc:hover{border-color:rgba(59,130,246,0.32);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.5);}
+    .sc:hover::after{opacity:1;}
+    .sh{display:flex;align-items:center;gap:0.7rem;margin-bottom:0.9rem;}
+    .si{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+    .sk{font-family:'Syne',sans-serif;font-weight:700;font-size:0.92rem;color:var(--text);}
+    .tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
+    .tag{font-family:'DM Mono',monospace;font-size:0.64rem;padding:0.2rem 0.5rem;border-radius:5px;}
+    .tb{background:rgba(59,130,246,0.1);color:#93c5fd;border:1px solid rgba(59,130,246,0.15);}
+    .tg{background:rgba(52,211,153,0.08);color:#6ee7b7;border:1px solid rgba(52,211,153,0.14);}
+    .to{background:rgba(245,158,11,0.08);color:#fcd34d;border:1px solid rgba(245,158,11,0.14);}
+    .tr{background:rgba(239,68,68,0.08);color:#fca5a5;border:1px solid rgba(239,68,68,0.14);}
+    .tp{background:rgba(168,85,247,0.08);color:#d8b4fe;border:1px solid rgba(168,85,247,0.14);}
+
+    /* ── EXPERIENCE ── */
+    .timeline{position:relative;padding-left:1.75rem;}
+    .timeline::before{content:'';position:absolute;left:0;top:6px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+    .job{position:relative;margin-bottom:2.75rem;padding-left:2rem;}
+    .job::before{content:'';position:absolute;left:-1.75rem;top:0.35rem;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 3px rgba(59,130,246,0.2);}
+    .job.cur::before{background:var(--a2);box-shadow:0 0 0 3px rgba(52,211,153,0.2);animation:cpulse 2.5s ease infinite;}
+    @keyframes cpulse{0%,100%{box-shadow:0 0 0 3px rgba(52,211,153,0.2)}50%{box-shadow:0 0 0 6px rgba(52,211,153,0.35)}}
+    .jh{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.3rem;}
+    .jt{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;}
+    .jp{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.05em;padding:0.2rem 0.6rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;white-space:nowrap;}
+    .jc{font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--a2);margin-bottom:0.65rem;}
+    .jc .cur-badge{display:inline-block;font-size:0.6rem;padding:0.1rem 0.45rem;border-radius:3px;background:rgba(52,211,153,0.1);color:var(--a2);border:1px solid rgba(52,211,153,0.2);margin-left:0.5rem;vertical-align:middle;}
+    .jl{list-style:none;display:flex;flex-direction:column;gap:0.32rem;}
+    .jl li{font-size:0.87rem;color:#94a3b8;padding-left:1.1rem;position:relative;}
+    .jl li::before{content:'›';position:absolute;left:0;color:var(--accent);font-weight:bold;}
+    .jl li strong{color:#cbd5e1;}
+
+    /* ── CERTIFICATIONS ── */
+    /* Group headers */
+    .cert-group{margin-bottom:2.5rem;}
+    .cert-group-title{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;}
+    .cert-group-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.05);}
+    .cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:0.85rem;}
+    .cc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;display:flex;align-items:center;gap:0.9rem;transition:all 0.22s;cursor:default;}
+    .cc:hover{border-color:rgba(52,211,153,0.28);transform:translateX(5px);box-shadow:0 6px 30px rgba(0,0,0,0.35);}
+    .cl{width:42px;height:42px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;}
+    .cl img{width:100%;height:100%;object-fit:contain;border-radius:7px;}
+    .cl.fb{background:transparent;}
+    .cn{font-weight:500;font-size:0.84rem;line-height:1.3;color:var(--text);}
+    .cm{display:flex;align-items:center;gap:0.4rem;margin-top:0.22rem;flex-wrap:wrap;}
+    .ci{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted);}
+    .cbadge{font-family:'DM Mono',monospace;font-size:0.58rem;padding:0.12rem 0.4rem;border-radius:3px;}
+    .cbadge.act{background:rgba(52,211,153,0.1);color:var(--a2);border:1px solid rgba(52,211,153,0.18);}
+    .cbadge.ace{background:rgba(168,85,247,0.1);color:#d8b4fe;border:1px solid rgba(168,85,247,0.18);}
+    .cbadge.gov{background:rgba(245,158,11,0.1);color:#fcd34d;border:1px solid rgba(245,158,11,0.18);}
+
+    /* icon fallback boxes */
+    .ico-aws{background:linear-gradient(135deg,#232F3E,#FF9900);color:#fff;font-weight:700;font-size:0.65rem;font-family:'DM Mono',monospace;}
+    .ico-ms{background:linear-gradient(135deg,#0078D4,#50e6ff);display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:7px;}
+    .ico-ms span{border-radius:1px;}
+    .ico-cisco{background:linear-gradient(135deg,#1BA0D7,#0A4C7C);color:#fff;font-weight:700;font-size:0.65rem;font-family:'DM Mono',monospace;}
+    .ico-ibm{background:linear-gradient(135deg,#1F70C1,#061727);color:#fff;font-weight:700;font-size:0.72rem;font-family:'Syne',sans-serif;}
+    .ico-google{background:#fff;display:flex;align-items:center;justify-content:center;}
+    .ico-depi{background:linear-gradient(135deg,#1a7a6e,#0d4d47);color:#fff;font-weight:700;font-size:0.58rem;font-family:'DM Mono',monospace;text-align:center;letter-spacing:0.05em;}
+
+    /* ── EDUCATION ── */
+    .eg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;}
+    .ec{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:border-color 0.3s;position:relative;overflow:hidden;}
+    .ec::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--a2));opacity:0;transition:opacity 0.3s;}
+    .ec:hover{border-color:rgba(59,130,246,0.28);}
+    .ec:hover::before{opacity:1;}
+    .ei{font-size:2.2rem;margin-bottom:1rem;}
+    .ed{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.3rem;line-height:1.3;}
+    .es{font-family:'DM Mono',monospace;font-size:0.76rem;color:var(--a2);margin-bottom:0.45rem;}
+    .ep{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);}
+    .ebs{display:flex;gap:0.45rem;flex-wrap:wrap;margin-top:0.75rem;}
+    .eb{font-family:'DM Mono',monospace;font-size:0.65rem;padding:0.18rem 0.5rem;border-radius:4px;}
+    .eb.gold{color:#fbbf24;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.18);}
+    .eb.blue{color:#93c5fd;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.18);}
+    .eb.green{color:#6ee7b7;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.14);}
+    .et{font-size:0.8rem;color:#64748b;margin-top:0.75rem;font-style:italic;line-height:1.55;}
+
+    /* ── CONTACT — PREMIUM ── */
+    .contact-hero{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem;margin-bottom:2rem;text-align:center;position:relative;overflow:hidden;}
+    .contact-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(59,130,246,0.08),transparent 60%);pointer-events:none;}
+    .contact-hero-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.5rem;margin-bottom:0.5rem;}
+    .contact-hero-sub{font-size:0.92rem;color:#64748b;max-width:420px;margin:0 auto 1.8rem;}
+    .contact-hero-cta{display:inline-flex;align-items:center;gap:0.6rem;padding:0.9rem 2.2rem;background:var(--accent);color:#fff;border-radius:10px;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.08em;text-decoration:none;transition:all 0.25s;border:1px solid var(--accent);}
+    .contact-hero-cta:hover{background:var(--ad);transform:translateY(-2px);box-shadow:0 14px 40px rgba(59,130,246,0.45);}
+    .contact-hero-cta svg{width:16px;height:16px;}
+
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.9rem;}
+    .contact-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;display:flex;align-items:center;gap:1rem;text-decoration:none;transition:all 0.25s;position:relative;overflow:hidden;}
+    .contact-card::after{content:'↗';position:absolute;top:0.6rem;right:0.9rem;font-size:0.7rem;color:var(--muted);opacity:0;transition:opacity 0.2s;}
+    .contact-card[href]:hover::after{opacity:1;}
+    .contact-card[href]:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 35px rgba(59,130,246,0.18);}
+    .contact-card.static{cursor:default;}
+    .contact-card.static:hover{transform:none;box-shadow:none;border-color:rgba(52,211,153,0.2);}
+    .cc-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;}
+    .cc-label{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.09em;}
+    .cc-val{font-size:0.87rem;color:var(--text);margin-top:0.08rem;font-weight:400;}
+
+    /* Availability strip */
+    .avail-strip{display:flex;align-items:center;gap:1.2rem;background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.16);border-radius:12px;padding:1rem 1.5rem;margin-top:1rem;}
+    .avail-dot{width:8px;height:8px;border-radius:50%;background:var(--a2);flex-shrink:0;animation:pulse 2s ease infinite;}
+    .avail-text{font-size:0.87rem;color:#94a3b8;}
+    .avail-text strong{color:var(--a2);}
+
+    /* ── FOOTER ── */
+    footer{padding:2.5rem 3.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-left{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);}
+    .footer-left span{color:var(--a2);}
+    .footer-links{display:flex;gap:1.5rem;}
+    .footer-links a{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--accent);}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    .fi{opacity:0;transform:translateY(18px);transition:opacity 0.65s ease,transform 0.65s ease;}
+    .fi.v{opacity:1;transform:translateY(0);}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links,.nav-cta{display:none;}
+      .hero{padding:6rem 1.5rem 4rem;}
+      .sw{padding:4rem 1.5rem;}
+      h1{font-size:2.5rem;}
+      .stats-bar{flex-wrap:wrap;border-radius:12px;}
+      .stat-item{flex:0 0 50%;border-right:none!important;border-bottom:1px solid var(--border);}
+      footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;}
+    }
+
+    /* ── FLOATING SERVICE BTN ── */
+    .float-service{
+      position:fixed;bottom:2rem;right:2rem;z-index:500;
+      display:flex;align-items:center;gap:0.6rem;
+      padding:0.85rem 1.5rem;border-radius:50px;
+      background:linear-gradient(135deg,var(--a2),var(--accent));
+      color:#fff;font-family:'DM Mono',monospace;font-size:0.76rem;
+      letter-spacing:0.06em;text-decoration:none;
+      box-shadow:0 8px 30px rgba(52,211,153,0.4);
+      transition:all 0.25s;border:none;cursor:pointer;
+      animation:floatIn 1s 1.5s ease both;
+    }
+    @keyframes floatIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .float-service:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(52,211,153,0.55);}
+    .float-service svg{width:15px;height:15px;}
+
+    /* ── SERVICES SECTION ── */
+    .services-intro{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;}
+    @media(max-width:768px){.services-intro{grid-template-columns:1fr;}}
+    .services-lead{font-size:1.05rem;color:#94a3b8;line-height:1.85;}
+    .services-cta-box{background:var(--card);border:1px solid rgba(52,211,153,0.2);border-radius:16px;padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;position:relative;overflow:hidden;}
+    .services-cta-box::before{content:'';position:absolute;top:0;right:0;width:150px;height:150px;background:radial-gradient(circle,rgba(52,211,153,0.1),transparent 70%);pointer-events:none;}
+    .services-cta-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;}
+    .services-cta-sub{font-size:0.85rem;color:#64748b;}
+    .services-cta-btn{display:inline-flex;align-items:center;gap:0.55rem;padding:0.75rem 1.5rem;background:var(--a2);color:#0a1612;border-radius:9px;font-family:'DM Mono',monospace;font-size:0.77rem;letter-spacing:0.07em;text-decoration:none;font-weight:500;transition:all 0.22s;align-self:flex-start;}
+    .services-cta-btn:hover{background:#2dd4bf;transform:translateY(-2px);box-shadow:0 10px 30px rgba(52,211,153,0.35);}
+    .services-cta-btn svg{width:14px;height:14px;}
+
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem;}
+    .proj-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all 0.28s;position:relative;overflow:hidden;}
+    .proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:opacity 0.3s;opacity:0;}
+    .proj-card:hover{border-color:rgba(59,130,246,0.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.45);}
+    .proj-card:hover::before{opacity:1;}
+    .proj-card.devops::before{background:linear-gradient(90deg,var(--a2),var(--accent));}
+    .proj-card.security::before{background:linear-gradient(90deg,#f87171,#fb923c);}
+    .proj-card.fullstack::before{background:linear-gradient(90deg,var(--accent),var(--a4));}
+    .proj-card.ai::before{background:linear-gradient(90deg,#fbbf24,var(--a2));}
+    .proj-card.infra::before{background:linear-gradient(90deg,#a78bfa,var(--accent));}
+    .proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+    .proj-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+    .proj-badges{display:flex;gap:0.4rem;flex-wrap:wrap;}
+    .proj-badge{font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.15rem 0.45rem;border-radius:4px;border:1px solid;}
+    .proj-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.4rem;line-height:1.3;}
+    .proj-desc{font-size:0.85rem;color:#64748b;line-height:1.65;margin-bottom:1rem;}
+    .proj-stack{display:flex;flex-wrap:wrap;gap:0.35rem;}
+    .proj-tag{font-family:'DM Mono',monospace;font-size:0.62rem;padding:0.18rem 0.48rem;border-radius:4px;background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid rgba(255,255,255,0.07);}
+  </style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cglow"></div>
+<a href="mailto:fadyy2k@gmail.com?subject=Service Request — Fady Mounir" class="float-service">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  Ask for a Service
+</a>
+
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Fady<span class="dot"></span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:fadyy2k@gmail.com" class="nav-cta">Hire Me →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-orb1"></div><div class="hero-orb2"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="badge-dot"></span>Available for EU / Germany / Remote Opportunities</div>
+    <h1>Fady Mounir<span class="nm"><span class="ac">Zaghloul</span></span></h1>
+    <p class="hero-role">IT & Security Manager · Cloud Infrastructure · DevOps · Cybersecurity</p>
+    <p class="hero-desc">12+ years architecting, securing, and managing enterprise cloud infrastructure across the MENA region. Currently leading IT & Security at AsusCard FinTech — reporting directly to the CTO.</p>
+    <div class="hero-cta">
+      <a href="mailto:fadyy2k@gmail.com" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in Touch
+      </a>
+      <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank" class="btn btn-li">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank" class="btn btn-cr">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5a7.5 7.5 0 110 15 7.5 7.5 0 010-15zm0 2.25a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zm0 2.25a3 3 0 110 6 3 3 0 010-6z"/></svg>
+        Credly Badges
+      </a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="stat-num">12<em>+</em></div><div class="stat-label">Years Exp.</div></div>
+      <div class="stat-item"><div class="stat-num"><em>&lt;</em>4h</div><div class="stat-label">RTO Achieved</div></div>
+      <div class="stat-item"><div class="stat-num">99<em>.95%</em></div><div class="stat-label">Uptime</div></div>
+      <div class="stat-item"><div class="stat-num">25<em>%</em></div><div class="stat-label">Incidents Reduced</div></div>
+      <div class="stat-item"><div class="stat-num">30<em>+</em></div><div class="stat-label">Certifications</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills"><div class="sw">
+  <div class="sl">01 — Core Competencies</div><h2>Technical Skills</h2>
+  <div class="sg">
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(255,153,0,0.12)">☁️</div><div class="sk">Cloud Platforms</div></div><div class="tags"><span class="tag to">AWS SAA-C03</span><span class="tag to">CLF-C02</span><span class="tag tb">Azure</span><span class="tag tb">GCP</span><span class="tag tp">IBM Cloud</span><span class="tag tg">EC2 / S3 / VPC</span><span class="tag tg">CloudWatch</span><span class="tag tg">Route 53</span><span class="tag tg">AWS IAM</span></div></div>
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(239,68,68,0.12)">🛡️</div><div class="sk">Cybersecurity</div></div><div class="tags"><span class="tag tr">SIEM</span><span class="tag tr">SOC Ops</span><span class="tag tr">Incident Response</span><span class="tag tb">IAM</span><span class="tag tb">MS Defender</span><span class="tag tb">MS Sentinel</span><span class="tag tg">NIST Framework</span><span class="tag tg">GDPR</span><span class="tag tg">Threat Intelligence</span><span class="tag tb">Vulnerability Mgmt</span><span class="tag tb">Digital Forensics</span></div></div>
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(6,182,212,0.12)">🌐</div><div class="sk">Networking</div></div><div class="tags"><span class="tag tb">CCNA</span><span class="tag tb">Routing & Switching</span><span class="tag tg">FortiGate</span><span class="tag tg">Sophos</span><span class="tag tb">VPN</span><span class="tag tb">DNS / DHCP</span><span class="tag tb">NAT / Firewalls</span><span class="tag tg">WAN / SD-WAN</span><span class="tag tg">Wireless LAN</span></div></div>
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(168,85,247,0.12)">💾</div><div class="sk">Virtualization & Storage</div></div><div class="tags"><span class="tag tp">VMware vSphere/ESXi</span><span class="tag tp">Proxmox VE</span><span class="tag tp">Hyper-V</span><span class="tag tb">TrueNAS</span><span class="tag tb">SAN / NAS</span><span class="tag tg">iSCSI / NFS</span><span class="tag tg">Synology / QNAP</span><span class="tag tb">Veeam</span><span class="tag tb">NAKIVO</span></div></div>
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(52,211,153,0.12)">🚀</div><div class="sk">DevOps & Automation</div></div><div class="tags"><span class="tag tg">Docker</span><span class="tag tg">CI/CD Pipelines</span><span class="tag tg">GitHub Actions</span><span class="tag tg">Nginx</span><span class="tag tb">Python</span><span class="tag tb">PowerShell</span><span class="tag tb">Bash</span><span class="tag to">PM2</span><span class="tag to">Supabase</span><span class="tag to">Node.js</span></div></div>
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(245,158,11,0.12)">🤖</div><div class="sk">AI & Emerging Tech</div></div><div class="tags"><span class="tag to">Generative AI</span><span class="tag to">Machine Learning</span><span class="tag to">Deep Learning</span><span class="tag to">NLP</span><span class="tag tb">HPC Optimization</span><span class="tag tb">IBM Watson</span><span class="tag tg">AI Ethics</span><span class="tag tg">Computer Vision</span></div></div>
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(59,130,246,0.12)">🖥️</div><div class="sk">Systems & Servers</div></div><div class="tags"><span class="tag tb">Windows Server</span><span class="tag tb">Ubuntu / Debian</span><span class="tag tb">MS Exchange</span><span class="tag tg">Active Directory</span><span class="tag tg">ITIL® Foundation</span><span class="tag tb">SQL / MS-SQL</span><span class="tag tb">MySQL</span><span class="tag tb">PHP / HTML / CSS</span></div></div>
+    <div class="sc fi"><div class="sh"><div class="si" style="background:rgba(239,68,68,0.1)">📋</div><div class="sk">IT Management</div></div><div class="tags"><span class="tag tr">Disaster Recovery</span><span class="tag tr">Business Continuity</span><span class="tag tg">SLA Management</span><span class="tag tg">Help Desk Ops</span><span class="tag tb">Project Management</span><span class="tag tb">Team Leadership</span><span class="tag to">GDPR Compliance</span><span class="tag to">Risk Assessment</span></div></div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience"><div class="sw">
+  <div class="sl">02 — Career History</div><h2>Professional Experience</h2>
+  <div class="timeline">
+
+    <div class="job cur fi">
+      <div class="jh"><div class="jt">IT & Security Manager</div><div class="jp">Sep 2025 — Present</div></div>
+      <div class="jc">⚡ AsusCard FinTech · Cairo, Egypt<span class="cur-badge">Current</span></div>
+      <ul class="jl">
+        <li>Lead end-to-end IT operations: <strong>Help Desk, Sysadmin, Infrastructure, Cloud, DevOps & Security</strong></li>
+        <li>Report directly to CTO on operational status, incidents, risks, and strategic improvement roadmaps</li>
+        <li>Oversee on-premises and cloud infrastructure for performance, scalability, and cost efficiency</li>
+        <li>Enforce cybersecurity controls, IT policies, and compliance frameworks across the organization</li>
+        <li>Lead cloud and DevOps initiatives — CI/CD automation, containerization, and deployment pipelines</li>
+      </ul>
+    </div>
+
+    <div class="job fi">
+      <div class="jh"><div class="jt">IT Supervisor</div><div class="jp">Feb 2022 — Oct 2025</div></div>
+      <div class="jc">🌍 DKT International (MENA) · Cairo, Egypt</div>
+      <ul class="jl">
+        <li>Drove <strong>20% operational efficiency improvement</strong> via cloud and virtualization initiatives</li>
+        <li>Designed hybrid cloud architectures (AWS + VMware ESXi + Proxmox) achieving <strong>99.95% uptime</strong></li>
+        <li>Migrated legacy on-prem systems to cloud — delivered <strong>35% hardware cost reduction</strong></li>
+        <li>Implemented GDPR compliance protocols, reducing security incidents by <strong>25%</strong></li>
+        <li>Reduced downtime by <strong>15%</strong> through proactive monitoring and performance tuning</li>
+        <li>End-to-end setup of new regional offices in <strong>Jordan and Turkey</strong></li>
+        <li>Executed SAN-to-NAS disaster recovery plans — achieved <strong>RTO &lt; 4 hours</strong></li>
+        <li>Led cross-functional IT team of <strong>4 professionals</strong> across the MENA region</li>
+      </ul>
+    </div>
+
+    <div class="job fi">
+      <div class="jh"><div class="jt">IT Specialist</div><div class="jp">May 2019 — Jan 2022</div></div>
+      <div class="jc">🌍 DKT International · Cairo, Egypt</div>
+      <ul class="jl">
+        <li>Managed hosting, VPS, and cloud services — reduced hosting costs by <strong>10%</strong></li>
+        <li>Provided comprehensive support to <strong>50+ employees</strong> with <strong>95% SLA compliance</strong></li>
+        <li>Administered Microsoft Exchange servers with <strong>99.9% uptime</strong> across MENA</li>
+      </ul>
+    </div>
+
+    <div class="job fi">
+      <div class="jh"><div class="jt">Senior IT Specialist / IT Engineer</div><div class="jp">Feb 2016 — Apr 2019</div></div>
+      <div class="jc">💼 Open Business Solutions · Cairo, Egypt</div>
+      <ul class="jl">
+        <li>Improved client satisfaction by <strong>15%</strong> through effective Tier 1 & 2 support delivery</li>
+        <li>Reduced onboarding time by <strong>20%</strong> via technical documentation and whitepapers</li>
+        <li>Managed VPS/hosting; root cause analysis on complex infrastructure failures</li>
+        <li>Mentored junior engineers on system administration and troubleshooting</li>
+      </ul>
+    </div>
+
+    <div class="job fi">
+      <div class="jh"><div class="jt">Junior IT Engineer</div><div class="jp">Mar 2015 — Jan 2016</div></div>
+      <div class="jc">🏭 Wood Equipment Co. · Alexandria, Egypt</div>
+      <ul class="jl">
+        <li>Managed full company IT infrastructure — network, servers, websites, and cabling</li>
+        <li>Achieved <strong>99% uptime</strong> across all network infrastructure</li>
+      </ul>
+    </div>
+
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- FREELANCE & SERVICES -->
+<section id="services"><div class="sw">
+  <div class="sl">03 — Freelance & Projects</div><h2>Services & Project Work</h2>
+
+  <div class="services-intro">
+    <div class="services-lead">
+      Beyond my full-time role, I take on select freelance and consulting engagements — from cloud infrastructure builds and DevOps automation to full-stack dashboards and AI-powered tools. These are real projects I've shipped, not demos.
+    </div>
+    <div class="services-cta-box">
+      <div class="services-cta-title">Got a project in mind?</div>
+      <div class="services-cta-sub">Cloud setup, VPS configuration, DevOps pipelines, scraping tools, web apps — let's talk.</div>
+      <a href="mailto:fadyy2k@gmail.com?subject=Service Request — Fady Mounir" class="services-cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Request a Service
+      </a>
+    </div>
+  </div>
+
+  <div class="proj-grid">
+
+    <div class="proj-card devops fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(52,211,153,0.1)">🚀</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:var(--a2);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.08)">DevOps</span>
+          <span class="proj-badge" style="color:#93c5fd;border-color:rgba(59,130,246,0.3);background:rgba(59,130,246,0.08)">VPS</span>
+        </div>
+      </div>
+      <div class="proj-title">Salla Orders Bot Dashboard</div>
+      <div class="proj-desc">Full deployment of a React/Vite dashboard on a self-hosted Ubuntu VPS (Hostinger). Set up PM2 process management, built Nginx reverse proxy with SSL, configured static file serving at <code style="font-size:0.75rem;background:rgba(255,255,255,0.06);padding:0.1rem 0.3rem;border-radius:3px;">/dashboard</code>, and restored the production stack after a critical PM2 failure.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">Ubuntu 24.04</span><span class="proj-tag">Nginx</span><span class="proj-tag">PM2</span><span class="proj-tag">Vite/React</span><span class="proj-tag">Let's Encrypt</span><span class="proj-tag">Supabase</span>
+      </div>
+    </div>
+
+    <div class="proj-card fullstack fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(168,85,247,0.1)">🕷️</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:#d8b4fe;border-color:rgba(168,85,247,0.3);background:rgba(168,85,247,0.08)">Full-Stack</span>
+          <span class="proj-badge" style="color:#fcd34d;border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.08)">Scraping</span>
+        </div>
+      </div>
+      <div class="proj-title">PUBG Mobile UC Reseller Scraper</div>
+      <div class="proj-desc">Built a full-stack web application targeting Chinese platforms to source PUBG Mobile UC in bulk for GCC resale. Integrated SearXNG for meta-search, Scrapling for anti-bot scraping, Telethon for Telegram automation, and a React dashboard for live search monitoring. Delivered as a Docker Compose stack.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">Python/FastAPI</span><span class="proj-tag">React</span><span class="proj-tag">Docker Compose</span><span class="proj-tag">SearXNG</span><span class="proj-tag">Scrapling</span><span class="proj-tag">Telethon</span>
+      </div>
+    </div>
+
+    <div class="proj-card fullstack fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(59,130,246,0.1)">💰</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:#93c5fd;border-color:rgba(59,130,246,0.3);background:rgba(59,130,246,0.08)">Full-Stack</span>
+          <span class="proj-badge" style="color:#6ee7b7;border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.08)">SaaS</span>
+        </div>
+      </div>
+      <div class="proj-title">CardIntel — Gift Card Price Intelligence</div>
+      <div class="proj-desc">Designed and architected a gift card price comparison platform. Backend in FastAPI with async SQLAlchemy and PostgreSQL for append-only price history. Frontend in React 18/TypeScript/Vite with Tailwind and shadcn/ui. Scrapling as the sole scraper engine with real-time WebSocket progress updates.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">FastAPI</span><span class="proj-tag">PostgreSQL</span><span class="proj-tag">React 18</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Tailwind</span><span class="proj-tag">Scrapling</span><span class="proj-tag">WebSockets</span>
+      </div>
+    </div>
+
+    <div class="proj-card devops fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(52,211,153,0.1)">⚙️</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:var(--a2);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.08)">CI/CD</span>
+          <span class="proj-badge" style="color:#93c5fd;border-color:rgba(59,130,246,0.3);background:rgba(59,130,246,0.08)">DevOps</span>
+        </div>
+      </div>
+      <div class="proj-title">Transfigure Admin — GitHub Actions Deployment</div>
+      <div class="proj-desc">Implemented and debugged a full GitHub Actions CI/CD pipeline for the <code style="font-size:0.75rem;background:rgba(255,255,255,0.06);padding:0.1rem 0.3rem;border-radius:3px;">transfigure-admin</code> React app. SSH-based deployment to VPS on port 2222, Vite production builds, Nginx config validation on every deploy, and identified an 8MB bundle size issue caused by <code style="font-size:0.75rem;background:rgba(255,255,255,0.06);padding:0.1rem 0.3rem;border-radius:3px;">pdfjs-dist</code>.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">GitHub Actions</span><span class="proj-tag">Vite</span><span class="proj-tag">Nginx</span><span class="proj-tag">SSH Deploy</span><span class="proj-tag">PM2</span><span class="proj-tag">SSL/TLS</span>
+      </div>
+    </div>
+
+    <div class="proj-card infra fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(168,85,247,0.1)">🔋</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:#d8b4fe;border-color:rgba(168,85,247,0.3);background:rgba(168,85,247,0.08)">Infrastructure</span>
+          <span class="proj-badge" style="color:#fcd34d;border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.08)">BCP</span>
+        </div>
+      </div>
+      <div class="proj-title">AsusCard Business Continuity Plan</div>
+      <div class="proj-desc">Designed a complete Business Continuity Plan for daily power outages at AsusCard FinTech. Evaluated and selected the APC BV650I-GR UPS (720W, 650VA) and WE Nitro MiFi 585 as primary failover connectivity, with full cost analysis and implementation runbook for the IT team.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">BCP Design</span><span class="proj-tag">APC UPS</span><span class="proj-tag">Failover</span><span class="proj-tag">Network Redundancy</span><span class="proj-tag">Vendor Analysis</span>
+      </div>
+    </div>
+
+    <div class="proj-card ai fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(245,158,11,0.1)">🏎️</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:#fcd34d;border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.08)">Full-Stack</span>
+          <span class="proj-badge" style="color:var(--a2);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.08)">SaaS</span>
+        </div>
+      </div>
+      <div class="proj-title">AutoCare App</div>
+      <div class="proj-desc">Vehicle maintenance management web app. Built on React 18/TypeScript with Vite, shadcn/ui, and Tailwind CSS on the frontend, and Supabase for the backend (auth, database, real-time subscriptions, storage). Tracks service history, upcoming maintenance schedules, and expenses.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">React 18</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Vite</span><span class="proj-tag">shadcn/ui</span><span class="proj-tag">Supabase</span><span class="proj-tag">Tailwind CSS</span>
+      </div>
+    </div>
+
+    <div class="proj-card security fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(239,68,68,0.1)">✉️</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:#fca5a5;border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.08)">Design</span>
+          <span class="proj-badge" style="color:#93c5fd;border-color:rgba(59,130,246,0.3);background:rgba(59,130,246,0.08)">Email</span>
+        </div>
+      </div>
+      <div class="proj-title">AsusCard HTML Email Signature</div>
+      <div class="proj-desc">Designed a production-ready HTML email signature for AsusCard FinTech. Two-column gradient layout with base64-encoded company logo, inline SVG social icons, confidentiality disclaimer, and full compatibility with Gmail, Outlook, and Apple Mail.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">HTML Email</span><span class="proj-tag">Base64 Assets</span><span class="proj-tag">Gmail</span><span class="proj-tag">Outlook</span><span class="proj-tag">SVG Icons</span>
+      </div>
+    </div>
+
+    <div class="proj-card infra fi">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:rgba(59,130,246,0.1)">🎮</div>
+        <div class="proj-badges">
+          <span class="proj-badge" style="color:#93c5fd;border-color:rgba(59,130,246,0.3);background:rgba(59,130,246,0.08)">Server Admin</span>
+          <span class="proj-badge" style="color:#d8b4fe;border-color:rgba(168,85,247,0.3);background:rgba(168,85,247,0.08)">Windows</span>
+        </div>
+      </div>
+      <div class="proj-title">Silkroad Online Private Server</div>
+      <div class="proj-desc">Planned and deployed a vSRO 1.188 Silkroad Online private server for a private group on a Windows VPS (Contabo/Hetzner). Covers MS SQL Server setup, database restore, server binary configuration, and port-forwarding for external player connections.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">Windows Server</span><span class="proj-tag">MS SQL Server</span><span class="proj-tag">VPS</span><span class="proj-tag">Port Forwarding</span><span class="proj-tag">Game Server Admin</span>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS — COMPLETE FROM CREDLY TRANSCRIPT -->
+<section id="certifications"><div class="sw">
+  <div class="sl">03 — Credentials</div><h2>Certifications & Badges</h2>
+
+  <!-- AWS -->
+  <div class="cert-group">
+    <div class="cert-group-title">Amazon Web Services</div>
+    <div class="cg">
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Certified Solutions Architect – Associate (SAA-C03)</div><div class="cm"><span class="ci">Amazon Web Services</span><span class="cbadge act">Valid Nov 2027</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Certified Cloud Practitioner (CLF-C02)</div><div class="cm"><span class="ci">Amazon Web Services</span><span class="cbadge act">Valid Nov 2027</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Academy Graduate – Cloud Foundations</div><div class="cm"><span class="ci">Amazon Web Services</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Educate: Introduction to Generative AI</div><div class="cm"><span class="ci">Amazon Web Services</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Educate: Getting Started with Security</div><div class="cm"><span class="ci">Amazon Web Services</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Educate: Machine Learning Foundations</div><div class="cm"><span class="ci">Amazon Web Services</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Educate: Getting Started with Storage</div><div class="cm"><span class="ci">Amazon Web Services</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Educate: Introduction to Cloud 101</div><div class="cm"><span class="ci">Amazon Web Services</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#232F3E;display:flex;align-items:center;justify-content:center;padding:6px;"><svg viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" width="44" height="30"><path d="M22.3 19.4c0 .7.1 1.2.3 1.6.2.4.5.8 1 1.1.1.2.2.3.2.5 0 .2-.2.5-.5.7l-1.4.9c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.3-.6-.7-.8-1.1-.2-.4-.5-.9-.7-1.4-1.8 2.1-4 3.1-6.6 3.1-1.9 0-3.4-.5-4.5-1.6-1.1-1.1-1.7-2.5-1.7-4.3 0-1.9.7-3.4 2.1-4.6 1.4-1.1 3.2-1.7 5.5-1.7.8 0 1.6.1 2.4.2.8.1 1.6.3 2.5.5V12c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.6.5-2.3.9-.3.2-.6.3-.7.3-.3 0-.4-.2-.4-.6V7.7c0-.3.1-.5.2-.6.1-.2.4-.3.6-.5.7-.4 1.6-.8 2.7-1 1.1-.3 2.2-.4 3.4-.4 2.5 0 4.3.6 5.4 1.7 1.1 1.1 1.7 2.8 1.7 5.1v6.4zM13.1 23c.7 0 1.5-.1 2.3-.4.8-.3 1.6-.9 2.2-1.6.4-.5.6-.9.7-1.4.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.2-2-.3-.7 0-1.3-.1-2-.1-1.4 0-2.5.3-3.2.9-.7.6-1 1.4-1 2.4 0 1 .2 1.7.7 2.2.5.7 1.2 1 2.1 1zm17.2 2.3c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7L24.5 9.6c-.1-.4-.2-.7-.2-.9 0-.3.2-.5.5-.5h1.9c.3 0 .6.1.7.2.2.1.3.4.4.7l3.3 12.9 3.1-12.9c.1-.4.2-.6.4-.7.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.2.1.3.4.4.7l3.1 13.1 3.4-13.1c.1-.4.3-.6.4-.7.2-.1.4-.2.7-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .3-.1.4l-.1.4-4.8 14.9c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.7l-3.1-12.6-3.1 12.6c-.1.4-.2.6-.4.7-.2.1-.4.2-.7.2H30.3zm25.7.6c-1 0-2-.1-3-.4-1-.2-1.8-.6-2.3-1-.3-.2-.5-.4-.5-.6-.1-.2-.1-.4-.1-.6v-1c0-.4.1-.6.4-.6.1 0 .3.1.5.2.1 0 .3.1.5.3.7.3 1.4.6 2.1.8.8.2 1.5.3 2.3.3 1.3 0 2.2-.2 2.9-.7.7-.5 1-1.1 1-1.9 0-.6-.2-1-.5-1.4-.4-.4-1.1-.8-2.2-1.1l-3.2-1c-1.6-.5-2.8-1.3-3.5-2.3-.7-1-.1-2-.1-3.2 0-.9.2-1.8.6-2.5.4-.7.9-1.4 1.6-1.9.7-.5 1.5-.9 2.4-1.1 1-.3 2-.4 3-.4.5 0 1.1.1 1.6.2.5.1 1.1.2 1.6.4.5.1.9.3 1.3.5.4.2.7.3.9.5.3.2.5.3.6.5.1.2.1.4.1.7v.9c0 .4-.1.6-.4.6-.1 0-.4-.1-.7-.3-1.3-.5-2.7-.9-4.2-.9-1.1 0-2 .2-2.7.6-.7.4-1 1-1 1.8 0 .6.2 1 .6 1.4.4.4 1.2.8 2.4 1.1l3.1.9c1.6.5 2.7 1.2 3.4 2.1.7 1 1 2 1 3.1 0 .9-.2 1.8-.6 2.6-.4.8-.9 1.4-1.6 1.9-.7.5-1.6.9-2.6 1.1-1 .3-2.1.4-3.3.4z" fill="#FF9900"/><path d="M73 37.7c-9 6.6-22 10.1-33.2 10.1-15.7 0-29.8-5.8-40.5-15.4-.8-.7-.1-1.7.9-1.1 11.5 6.7 25.7 10.8 40.4 10.8 9.9 0 20.8-2 30.8-6.3 1.5-.6 2.8 1 1.6 1.9z" fill="#FF9900"/><path d="M76.8 33.6c-1.1-1.4-7.4-.7-10.3-.3-.8.1-.9-.6-.2-1.1 5.1-3.6 13.4-2.5 14.4-1.4.9 1.2-.3 9.6-5 13.6-.7.6-1.4.3-1.1-.5 1.1-2.6 3.4-8.9 2.2-10.3z" fill="#FF9900"/></svg></div><div><div class="cn">AWS Educate: Getting Started with Compute</div><div class="cm"><span class="ci">Amazon Web Services</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- Microsoft -->
+  <div class="cert-group">
+    <div class="cert-group-title">Microsoft</div>
+    <div class="cg">
+      <div class="cc fi"><div class="cl" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 21 21" width="30" height="30" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="10" height="10" fill="#F25022"/><rect x="11" y="0" width="10" height="10" fill="#7FBA00"/><rect x="0" y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg></div><div><div class="cn">Microsoft Cybersecurity Architect (SC-100)</div><div class="cm"><span class="ci">Microsoft</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:8px;"><svg viewBox="0 0 21 21" width="30" height="30" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="10" height="10" fill="#F25022"/><rect x="11" y="0" width="10" height="10" fill="#7FBA00"/><rect x="0" y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg></div><div><div class="cn">Microsoft Security Operations Analyst (SC-200)</div><div class="cm"><span class="ci">Microsoft</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- Cisco -->
+  <div class="cert-group">
+    <div class="cert-group-title">Cisco</div>
+    <div class="cg">
+      <div class="cc fi"><div class="cl" style="background:#049FD9;display:flex;align-items:center;justify-content:center;padding:7px;"><svg viewBox="0 0 62 38" xmlns="http://www.w3.org/2000/svg" width="40" height="26"><g fill="#fff"><rect x="26" y="0" width="10" height="38" rx="4"/><rect x="9" y="8" width="10" height="22" rx="4"/><rect x="43" y="8" width="10" height="22" rx="4"/><rect x="0" y="15" width="7" height="8" rx="3.5"/><rect x="55" y="15" width="7" height="8" rx="3.5"/></g></svg></div><div><div class="cn">CCNA: Enterprise Networking, Security & Automation</div><div class="cm"><span class="ci">Cisco Networking Academy</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#049FD9;display:flex;align-items:center;justify-content:center;padding:7px;"><svg viewBox="0 0 62 38" xmlns="http://www.w3.org/2000/svg" width="40" height="26"><g fill="#fff"><rect x="26" y="0" width="10" height="38" rx="4"/><rect x="9" y="8" width="10" height="22" rx="4"/><rect x="43" y="8" width="10" height="22" rx="4"/><rect x="0" y="15" width="7" height="8" rx="3.5"/><rect x="55" y="15" width="7" height="8" rx="3.5"/></g></svg></div><div><div class="cn">CyberOps Associate (200-201 CBROPS)</div><div class="cm"><span class="ci">Cisco</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#049FD9;display:flex;align-items:center;justify-content:center;padding:7px;"><svg viewBox="0 0 62 38" xmlns="http://www.w3.org/2000/svg" width="40" height="26"><g fill="#fff"><rect x="26" y="0" width="10" height="38" rx="4"/><rect x="9" y="8" width="10" height="22" rx="4"/><rect x="43" y="8" width="10" height="22" rx="4"/><rect x="0" y="15" width="7" height="8" rx="3.5"/><rect x="55" y="15" width="7" height="8" rx="3.5"/></g></svg></div><div><div class="cn">CCNA: Switching, Routing & Wireless Essentials</div><div class="cm"><span class="ci">Cisco</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#049FD9;display:flex;align-items:center;justify-content:center;padding:7px;"><svg viewBox="0 0 62 38" xmlns="http://www.w3.org/2000/svg" width="40" height="26"><g fill="#fff"><rect x="26" y="0" width="10" height="38" rx="4"/><rect x="9" y="8" width="10" height="22" rx="4"/><rect x="43" y="8" width="10" height="22" rx="4"/><rect x="0" y="15" width="7" height="8" rx="3.5"/><rect x="55" y="15" width="7" height="8" rx="3.5"/></g></svg></div><div><div class="cn">CCNA: Introduction to Networks</div><div class="cm"><span class="ci">Cisco</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#049FD9;display:flex;align-items:center;justify-content:center;padding:7px;"><svg viewBox="0 0 62 38" xmlns="http://www.w3.org/2000/svg" width="40" height="26"><g fill="#fff"><rect x="26" y="0" width="10" height="38" rx="4"/><rect x="9" y="8" width="10" height="22" rx="4"/><rect x="43" y="8" width="10" height="22" rx="4"/><rect x="0" y="15" width="7" height="8" rx="3.5"/><rect x="55" y="15" width="7" height="8" rx="3.5"/></g></svg></div><div><div class="cn">AI Fundamentals with IBM SkillsBuild</div><div class="cm"><span class="ci">Cisco × IBM SkillsBuild</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- IBM -->
+  <div class="cert-group">
+    <div class="cert-group-title">IBM</div>
+    <div class="cg">
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM SkillsBuild Cybersecurity Certificate</div><div class="cm"><span class="ci">IBM SkillsBuild</span><span class="cbadge ace">ACE Endorsed</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Advanced Architect Cloud Options</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Advanced Architect Concepts v2</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Professional SRE Principles</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Professional SRE Essentials</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud VMware Essentials</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Professional Architect Concepts V2</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Professional Architect Cloud Options V2</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Technical Advocate Foundations V2</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Technical Advocate Concepts V2</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Advocate Essentials</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Fundamentals of IBM Cloud Associate SRE V2</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Principles of IBM Cloud Associate SRE V2</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Artificial Intelligence Fundamentals</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Cybersecurity Fundamentals</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Cloud Computing Fundamentals</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Information Technology Fundamentals</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM Cloud Essentials</div><div class="cm"><span class="ci">IBM</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Explore Emerging Tech</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Hardware Components and Troubleshooting</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Network Protocol and Configuration</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Cloud Computing and Virtualization</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IT Security and Compliance</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">IBM SkillsBuild IT Support Technician Certificate</div><div class="cm"><span class="ci">IBM SkillsBuild</span><span class="cbadge ace">ACE Endorsed</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Governance, Risk, Compliance & Data Privacy</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Vulnerability Management</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Cloud Security</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Security Operations and Management</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Incident Response and Systems Forensics</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">System and Network Security</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Project Management Fundamentals</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+      <div class="cc fi"><div class="cl" style="background:#1F70C1;display:flex;align-items:center;justify-content:center;"><span style="font-family:Arial Black,sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:1px;line-height:1;">IBM</span></div><div><div class="cn">Software and Operating Systems</div><div class="cm"><span class="ci">IBM SkillsBuild</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- Google -->
+  <div class="cert-group">
+    <div class="cert-group-title">Google</div>
+    <div class="cg">
+      <div class="cc fi"><div class="cl"><img src="https://images.credly.com/size/80x80/images/ae2f5bae-b110-4ea1-8e26-77cf5f76c81e/GCC_badge_IT_Support_1000x1000.png" alt="Google IT" onerror="this.style.display='none';this.parentNode.className+=' fb ico-google';this.parentNode.innerHTML='<svg width=24 height=24 viewBox=&quot;0 0 24 24&quot;><path fill=&quot;#4285F4&quot; d=&quot;M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z&quot;/><path fill=&quot;#34A853&quot; d=&quot;M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z&quot;/><path fill=&quot;#FBBC05&quot; d=&quot;M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z&quot;/><path fill=&quot;#EA4335&quot; d=&quot;M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z&quot;/></svg>'"/></div><div><div class="cn">Google IT Support Professional Certificate</div><div class="cm"><span class="ci">Google / Coursera</span><span class="cbadge ace">ACE Endorsed</span></div></div></div>
+      <div class="cc fi"><div class="cl ico-google"><svg viewBox="0 0 24 24" width="28" height="28"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></div><div><div class="cn">Security in Google Cloud Specialization</div><div class="cm"><span class="ci">Google Cloud / Coursera</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- DEPI / Egypt Gov -->
+  <div class="cert-group">
+    <div class="cert-group-title">Digital Egypt Pioneers Initiative (MCIT)</div>
+    <div class="cg">
+      <div class="cc fi"><div class="cl fb ico-depi">DEPI<br>★</div><div><div class="cn">Infrastructure & Security – Cisco Cybersecurity Engineer</div><div class="cm"><span class="ci">NTI / Berlitz / MCIT · Nov 2024 – May 2025</span><span class="cbadge gov">Gov. Certified</span></div></div></div>
+      <div class="cc fi"><div class="cl fb ico-depi">DEPI<br>★</div><div><div class="cn">Business English Track – DEPI Star Certified</div><div class="cm"><span class="ci">Berlitz Egypt / MCIT · Nov 2024 – May 2025</span><span class="cbadge gov">Gov. Certified</span></div></div></div>
+    </div>
+  </div>
+
+</div></section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education"><div class="sw">
+  <div class="sl">04 — Academic Background</div><h2>Education</h2>
+  <div class="eg">
+    <div class="ec fi"><div class="ei">🎓</div><div class="ed">Post Graduate Diploma — AI & Modern Technologies</div><div class="es">National Telecommunication Institute (NTI) · Cairo</div><div class="ep">2021 – 2023 · 60 ECTS · EQF Level 7</div><div class="ebs"><span class="eb gold">🏅 Distinction</span><span class="eb green">EQF Level 7</span><span class="eb blue">60 ECTS</span></div><div class="et">Thesis: HPC Optimization — AI-driven solution enhancing computational efficiency by 30%</div></div>
+    <div class="ec fi"><div class="ei">⚙️</div><div class="ed">B.Sc. Computer Engineering</div><div class="es">Higher Institute for Engineering · Alexandria</div><div class="ep">2009 – 2013 · 240 ECTS · EQF Level 6</div><div class="ebs"><span class="eb blue">Grade: B+</span><span class="eb green">EQF Level 6</span><span class="eb blue">240 ECTS</span></div><div class="et">Thesis: Unmanned Vehicle — Autonomous system with embedded controls and automation</div></div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- CONTACT — PREMIUM -->
+<section id="contact"><div class="sw">
+  <div class="sl">05 — Let's Connect</div><h2>Contact</h2>
+
+  <div class="contact-hero fi">
+    <div class="contact-hero-title">Open to New Opportunities</div>
+    <div class="contact-hero-sub">Interested in IT Manager, Infrastructure Lead, Cloud Engineer, or Security roles — preferably EU / Germany / Remote.</div>
+    <a href="mailto:fadyy2k@gmail.com" class="contact-hero-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Send me a message
+    </a>
+  </div>
+
+  <div class="contact-grid">
+    <a href="mailto:fadyy2k@gmail.com" class="contact-card fi">
+      <div class="cc-icon" style="background:rgba(59,130,246,0.1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7cb9f4" stroke-width="1.5" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div><div class="cc-label">Email</div><div class="cc-val">fadyy2k@gmail.com</div></div>
+    </a>
+    <a href="tel:+201226800676" class="contact-card fi">
+      <div class="cc-icon" style="background:rgba(52,211,153,0.1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="1.5" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <div><div class="cc-label">Phone</div><div class="cc-val">+20 12 2680 0676</div></div>
+    </a>
+    <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank" class="contact-card fi">
+      <div class="cc-icon" style="background:rgba(10,102,194,0.12)">
+        <svg viewBox="0 0 24 24" fill="#7cb9f4" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+      <div><div class="cc-label">LinkedIn</div><div class="cc-val">fady-mounir-601331b6</div></div>
+    </a>
+    <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank" class="contact-card fi">
+      <div class="cc-icon" style="background:rgba(255,107,0,0.1)">
+        <svg viewBox="0 0 24 24" fill="#fdba74" width="20" height="20"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5a7.5 7.5 0 110 15 7.5 7.5 0 010-15zm0 2.25a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zm0 2.25a3 3 0 110 6 3 3 0 010-6z"/></svg>
+      </div>
+      <div><div class="cc-label">Credly</div><div class="cc-val">30+ Verified Badges</div></div>
+    </a>
+    <div class="contact-card static fi">
+      <div class="cc-icon" style="background:rgba(239,68,68,0.1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fca5a5" stroke-width="1.5" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div><div class="cc-label">Location</div><div class="cc-val">Nasr City, Cairo, Egypt</div></div>
+    </div>
+    <div class="contact-card static fi">
+      <div class="cc-icon" style="background:rgba(168,85,247,0.1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#d8b4fe" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <div><div class="cc-label">Open To</div><div class="cc-val">EU / Germany / Remote</div></div>
+    </div>
+  </div>
+
+  <div class="avail-strip fi">
+    <div class="avail-dot"></div>
+    <div class="avail-text"><strong>Currently available</strong> for new opportunities — response time typically within 24 hours.</div>
+  </div>
+
+</div></section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 <span>Fady Mounir Zaghloul</span> · IT & Security Manager · Cairo, Egypt</div>
+  <div class="footer-links">
+    <a href="mailto:fadyy2k@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank">LinkedIn</a>
+    <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank">Credly</a>
+  </div>
+</footer>
+
+<script>
+  // Cursor glow
+  const g = document.getElementById('cglow');
+  document.addEventListener('mousemove', e => { g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; });
+
+  // Scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('v'), i*55); obs.unobserve(e.target); }
+    });
+  },{threshold:0.06});
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+  // Active nav link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur='';
+    sections.forEach(s=>{ if(window.scrollY>=s.offsetTop-120) cur=s.id; });
+    links.forEach(l=>{ l.style.color=l.getAttribute('href')==='#'+cur ? 'var(--a2)' : ''; });
+  });
+</script>
+</body>
+</html>
