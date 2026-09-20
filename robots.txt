@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fadyy2k.github.io/portfolio/sitemap.xml
