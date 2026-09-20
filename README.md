@@ -7,12 +7,12 @@ Interactive engineering portfolio focused on **infrastructure, platform engineer
 
 ## Highlights
 
-- Animated engineering-first hero and infrastructure flow
-- Featured public engineering labs with direct architecture/repository links
+- Two-column engineering hero with live terminal-style platform summary
+- Engineering-first information architecture: flagship → labs → case studies → experience
 - Sanitized production case studies separated from client/freelance work
 - Career history, technical skills, certifications, and education
-- Responsive mobile navigation and reduced-motion support
-- GitHub, LinkedIn, Credly, and contact integration
+- Responsive bento project layout, mobile navigation, scroll reveal and reduced-motion support
+- Open-source contribution, GitHub, LinkedIn, Credly and contact integration
 - Open Graph/Twitter social preview metadata and JSON-LD person schema
 - Favicon, `robots.txt`, and `sitemap.xml`
 - Automated static quality checks plus native GitHub Pages deployment from `main`
