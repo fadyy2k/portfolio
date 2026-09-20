@@ -1,5 +1,7 @@
 # Fady Mounir Zaghloul — Engineering Portfolio
 
+[![Deploy portfolio to GitHub Pages](https://github.com/fadyy2k/portfolio/actions/workflows/pages.yml/badge.svg)](https://github.com/fadyy2k/portfolio/actions/workflows/pages.yml)
+
 Static engineering portfolio focused on infrastructure, DevOps, security, cloud architecture, and production operations.
 
 ## Stack
