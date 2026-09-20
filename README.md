@@ -1,7 +1,7 @@
 # Fady Mounir Zaghloul — Engineering Portfolio
 
 [![Portfolio Quality](https://github.com/fadyy2k/portfolio/actions/workflows/quality.yml/badge.svg)](https://github.com/fadyy2k/portfolio/actions/workflows/quality.yml)
-[![Deploy portfolio to GitHub Pages](https://github.com/fadyy2k/portfolio/actions/workflows/pages.yml/badge.svg)](https://github.com/fadyy2k/portfolio/actions/workflows/pages.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-2ea44f?logo=githubpages)](https://fadyy2k.github.io/portfolio/)
 
 Interactive engineering portfolio focused on **infrastructure, platform engineering, DevOps, cybersecurity, cloud architecture, and production operations**.
 
@@ -15,7 +15,7 @@ Interactive engineering portfolio focused on **infrastructure, platform engineer
 - GitHub, LinkedIn, Credly, and contact integration
 - Open Graph/Twitter social preview metadata and JSON-LD person schema
 - Favicon, `robots.txt`, and `sitemap.xml`
-- Automated static quality checks plus GitHub Pages deployment
+- Automated static quality checks plus native GitHub Pages deployment from `main`
 
 ## Featured Engineering
 
