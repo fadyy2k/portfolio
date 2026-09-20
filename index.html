@@ -3,8 +3,45 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fady Mounir Zaghloul — IT & Security Manager</title>
+  <title>Fady Mounir Zaghloul — Platform & Security Engineering</title>
+  <meta name="description" content="IT & Security Manager and infrastructure engineer building secure cloud platforms, DevSecOps pipelines, AWS/EKS environments, automation, and observability."/>
+  <meta name="theme-color" content="#07090f"/>
+  <link rel="canonical" href="https://fadyy2k.github.io/portfolio/"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://fadyy2k.github.io/portfolio/"/>
+  <meta property="og:title" content="Fady Mounir Zaghloul — IT & Security | Platform & Infrastructure Engineering"/>
+  <meta property="og:description" content="Cloud infrastructure, platform engineering, DevSecOps, cybersecurity, automation, and production operations."/>
+  <meta property="og:image" content="https://fadyy2k.github.io/portfolio/assets/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="Fady Mounir Zaghloul — IT & Security, Platform & Infrastructure Engineering"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Fady Mounir Zaghloul — Platform & Infrastructure Engineering"/>
+  <meta name="twitter:description" content="Cloud infrastructure, DevSecOps, cybersecurity, automation, and production operations."/>
+  <meta name="twitter:image" content="https://fadyy2k.github.io/portfolio/assets/og-image.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Fady Mounir Zaghloul",
+    "url":"https://fadyy2k.github.io/portfolio/",
+    "jobTitle":"IT & Security Manager",
+    "sameAs":[
+      "https://github.com/fadyy2k",
+      "https://www.linkedin.com/in/fady-mounir-601331b6/",
+      "https://www.credly.com/users/fady-mounir-zaghloul"
+    ],
+    "knowsAbout":["AWS","EKS","Kubernetes","Terraform","DevSecOps","Cybersecurity","Infrastructure Engineering","Observability","GitOps"],
+    "address":{"@type":"PostalAddress","addressLocality":"Cairo","addressCountry":"EG"}
+  }
+  </script>
   <style>
     :root {
       --bg:#07090f;--surface:#0d1017;--border:rgba(255,255,255,0.07);--bh:rgba(255,255,255,0.13);
@@ -265,10 +302,76 @@
     .proj-desc{font-size:0.85rem;color:#64748b;line-height:1.65;margin-bottom:1rem;}
     .proj-stack{display:flex;flex-wrap:wrap;gap:0.35rem;}
     .proj-tag{font-family:'DM Mono',monospace;font-size:0.62rem;padding:0.18rem 0.48rem;border-radius:4px;background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid rgba(255,255,255,0.07);}
+
+
+    /* ── ENGINEERING REFRESH ── */
+    .skip-link{position:fixed;top:-60px;left:1rem;z-index:1000;background:var(--accent);color:#fff;padding:.65rem 1rem;border-radius:8px;text-decoration:none;font-family:'DM Mono',monospace;font-size:.75rem;transition:top .2s;}
+    .skip-link:focus{top:1rem;}
+    :focus-visible{outline:2px solid var(--a2);outline-offset:4px;border-radius:5px;}
+    .btn-gh{background:#111827;color:#f8fafc;border-color:rgba(255,255,255,.14);}
+    .btn-gh:hover{background:#1f2937;border-color:rgba(255,255,255,.28);transform:translateY(-2px);box-shadow:0 12px 35px rgba(0,0,0,.45);}
+    .btn-contact{background:rgba(59,130,246,.08);color:#93c5fd;border-color:rgba(59,130,246,.22);}
+    .btn-contact:hover{background:rgba(59,130,246,.16);transform:translateY(-2px);}
+
+    .arch-flow{margin:1.25rem auto 0;padding:1rem 1.1rem;display:flex;align-items:center;justify-content:center;gap:.55rem;max-width:920px;border:1px solid var(--border);border-radius:14px;background:rgba(7,9,15,.62);backdrop-filter:blur(10px);overflow:hidden;}
+    .arch-node{min-width:104px;padding:.62rem .75rem;border:1px solid rgba(59,130,246,.18);border-radius:10px;background:rgba(14,20,32,.86);text-align:center;position:relative;}
+    .arch-node b{display:block;font-family:'Syne',sans-serif;font-size:.75rem;color:#dbeafe;line-height:1.2;}
+    .arch-node span{display:block;margin-top:.18rem;font-family:'DM Mono',monospace;font-size:.52rem;color:var(--muted);letter-spacing:.04em;}
+    .arch-hop{width:26px;height:1px;background:linear-gradient(90deg,rgba(59,130,246,.15),rgba(52,211,153,.55),rgba(59,130,246,.15));position:relative;flex:0 0 26px;}
+    .arch-hop::after{content:'';position:absolute;top:-2px;left:0;width:5px;height:5px;border-radius:50%;background:var(--a2);box-shadow:0 0 10px rgba(52,211,153,.9);animation:packet 2.25s linear infinite;}
+    .arch-hop:nth-of-type(4)::after{animation-delay:.35s}.arch-hop:nth-of-type(6)::after{animation-delay:.7s}.arch-hop:nth-of-type(8)::after{animation-delay:1.05s}.arch-hop:nth-of-type(10)::after{animation-delay:1.4s}
+    @keyframes packet{from{left:0;opacity:0}15%{opacity:1}85%{opacity:1}to{left:100%;opacity:0}}
+
+    .menu-toggle{display:none;background:transparent;border:1px solid var(--border);border-radius:8px;padding:.52rem;color:var(--text);cursor:pointer;}
+    .menu-toggle svg{display:block;width:20px;height:20px;}
+
+    .engineering-lead{max-width:760px;color:#94a3b8;font-size:1rem;line-height:1.8;margin:-1rem 0 2rem;}
+    .eng-group-title{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;color:var(--a2);display:flex;align-items:center;gap:.75rem;margin:2.2rem 0 1rem;}
+    .eng-group-title::after{content:'';height:1px;flex:1;background:var(--border);}
+    .eng-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem;}
+    .eng-card{background:linear-gradient(145deg,rgba(14,20,32,.96),rgba(10,14,24,.96));border:1px solid var(--border);border-radius:16px;padding:1.6rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;}
+    .eng-card::before{content:'';position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,var(--accent),var(--a2),var(--a4));opacity:.75;}
+    .eng-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.32);box-shadow:0 18px 45px rgba(0,0,0,.42);}
+    .eng-kicker{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--a2);margin-bottom:.55rem;}
+    .eng-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.08rem;margin-bottom:.55rem;}
+    .eng-desc{color:#7f8ea3;font-size:.84rem;line-height:1.65;margin-bottom:1rem;}
+    .eng-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;}
+    .eng-link{font-family:'DM Mono',monospace;font-size:.65rem;text-decoration:none;padding:.38rem .65rem;border-radius:6px;border:1px solid rgba(59,130,246,.2);color:#93c5fd;background:rgba(59,130,246,.07);transition:all .2s;}
+    .eng-link:hover{border-color:rgba(52,211,153,.42);color:#6ee7b7;background:rgba(52,211,153,.07);}
+    .case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;}
+    .case-card{display:block;text-decoration:none;background:rgba(255,255,255,.018);border:1px solid var(--border);border-radius:13px;padding:1.15rem;transition:all .22s;}
+    .case-card:hover{transform:translateY(-3px);border-color:rgba(168,139,250,.3);background:rgba(168,139,250,.035);}
+    .case-label{font-family:'DM Mono',monospace;font-size:.58rem;color:#c4b5fd;text-transform:uppercase;letter-spacing:.12em;}
+    .case-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--text);margin:.35rem 0;}
+    .case-copy{font-size:.76rem;color:var(--muted);line-height:1.55;}
+    .section-subtitle{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--a2);margin:2.2rem 0 1rem;display:flex;align-items:center;gap:.7rem;}
+    .section-subtitle::after{content:'';height:1px;background:var(--border);flex:1;}
+
+    @media(max-width:900px){.eng-grid{grid-template-columns:1fr}.case-grid{grid-template-columns:1fr 1fr}.arch-node{min-width:88px}.arch-node span{display:none}}
+    @media(max-width:768px){
+      .menu-toggle{display:block;}
+      .nav-links{display:none;position:absolute;top:100%;left:1rem;right:1rem;flex-direction:column;gap:0;padding:1rem;background:rgba(7,9,15,.98);border:1px solid var(--border);border-radius:12px;box-shadow:0 18px 45px rgba(0,0,0,.45);}
+      nav.open .nav-links{display:flex;}
+      .nav-links li{width:100%;}
+      .nav-links a{display:block;padding:.7rem .35rem;}
+      .arch-flow{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-top:1rem;}
+      .arch-hop{display:none}.arch-node{min-width:0}.arch-node span{display:block;}
+      .case-grid{grid-template-columns:1fr;}
+      .float-service{bottom:1rem;right:1rem;padding:.72rem 1rem;}
+    }
+    @media(pointer:coarse){.cursor-glow{display:none;}}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto;}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
+      .cursor-glow{display:none;}
+      .fi{opacity:1!important;transform:none!important;}
+    }
+
   </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="cursor-glow" id="cglow"></div>
 <a href="mailto:fadyy2k@gmail.com?subject=Service Request — Fady Mounir" class="float-service">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -279,10 +382,14 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Fady<span class="dot"></span></a>
-  <ul class="nav-links">
+  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links" id="primary-nav">
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#services">Services</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#engineering">Engineering</a></li>
+    <li><a href="#services">Projects</a></li>
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -291,33 +398,39 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="main-content" tabindex="-1">
   <div class="hero-orb1"></div><div class="hero-orb2"></div><div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="hero-badge"><span class="badge-dot"></span>Available for EU / Germany / Remote Opportunities</div>
     <h1>Fady Mounir<span class="nm"><span class="ac">Zaghloul</span></span></h1>
-    <p class="hero-role">IT & Security Manager · Cloud Infrastructure · DevOps · Cybersecurity</p>
-    <p class="hero-desc">12+ years architecting, securing, and managing enterprise cloud infrastructure across the MENA region. Currently leading IT & Security at AsusCard FinTech — reporting directly to the CTO.</p>
+    <p class="hero-role">IT & Security Manager · Platform & Infrastructure Engineering · DevSecOps</p>
+    <p class="hero-desc">12+ years designing, securing, and operating infrastructure across cloud, networking, automation, and security. Currently leading IT & Security at AsusCard FinTech while building public platform-engineering and DevSecOps reference projects.</p>
     <div class="hero-cta">
-      <a href="mailto:fadyy2k@gmail.com" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get in Touch
+      <a href="https://github.com/fadyy2k" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .7a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.56v-2.24c-3.22.7-3.9-1.36-3.9-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.72 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.16 1.19A10.95 10.95 0 0112 6.05c.98 0 1.96.13 2.88.39 2.19-1.5 3.16-1.19 3.16-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.44-2.71 5.42-5.29 5.71.42.36.79 1.07.79 2.16v3.25c0 .31.21.67.8.56A11.5 11.5 0 0012 .7z"/></svg>
+        View GitHub
       </a>
-      <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank" class="btn btn-li">
+      <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank" rel="noopener noreferrer" class="btn btn-li">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank" class="btn btn-cr">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5a7.5 7.5 0 110 15 7.5 7.5 0 010-15zm0 2.25a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zm0 2.25a3 3 0 110 6 3 3 0 010-6z"/></svg>
-        Credly Badges
-      </a>
+      <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank" rel="noopener noreferrer" class="btn btn-cr">Credly</a>
+      <a href="mailto:fadyy2k@gmail.com" class="btn btn-contact">Contact</a>
     </div>
     <div class="stats-bar">
-      <div class="stat-item"><div class="stat-num">12<em>+</em></div><div class="stat-label">Years Exp.</div></div>
-      <div class="stat-item"><div class="stat-num"><em>&lt;</em>4h</div><div class="stat-label">RTO Achieved</div></div>
-      <div class="stat-item"><div class="stat-num">99<em>.95%</em></div><div class="stat-label">Uptime</div></div>
-      <div class="stat-item"><div class="stat-num">25<em>%</em></div><div class="stat-label">Incidents Reduced</div></div>
+      <div class="stat-item" title="Career experience across infrastructure, systems, cloud and security"><div class="stat-num">12<em>+</em></div><div class="stat-label">Years Exp.</div></div>
+      <div class="stat-item" title="Documented disaster-recovery objective achieved in prior infrastructure work"><div class="stat-num"><em>&lt;</em>4h</div><div class="stat-label">RTO Achieved</div></div>
+      <div class="stat-item" title="Reported uptime from managed hybrid infrastructure"><div class="stat-num">99<em>.95%</em></div><div class="stat-label">Uptime</div></div>
+      <div class="stat-item" title="Reported reduction following security and compliance controls"><div class="stat-num">25<em>%</em></div><div class="stat-label">Incidents Reduced</div></div>
       <div class="stat-item"><div class="stat-num">30<em>+</em></div><div class="stat-label">Certifications</div></div>
+    </div>
+    <div class="arch-flow" role="img" aria-label="Engineering flow from GitHub through CI and security, Terraform, cloud, Kubernetes, and observability">
+      <div class="arch-node"><b>GitHub</b><span>source / GitOps</span></div><div class="arch-hop"></div>
+      <div class="arch-node"><b>CI + Security</b><span>Actions · CodeQL · Trivy</span></div><div class="arch-hop"></div>
+      <div class="arch-node"><b>Terraform</b><span>IaC / policy</span></div><div class="arch-hop"></div>
+      <div class="arch-node"><b>AWS / OCI</b><span>cloud platforms</span></div><div class="arch-hop"></div>
+      <div class="arch-node"><b>Kubernetes</b><span>EKS · K3s · Argo CD</span></div><div class="arch-hop"></div>
+      <div class="arch-node"><b>Observe</b><span>Prometheus · Grafana</span></div>
     </div>
   </div>
 </div>
@@ -408,13 +521,60 @@
 
 <div class="divider"></div>
 
+<!-- FEATURED ENGINEERING -->
+<section id="engineering"><div class="sw">
+  <div class="sl">03 — Engineering Portfolio</div><h2>Featured Engineering Projects</h2>
+  <div class="engineering-lead">Public, reproducible engineering labs sit next to sanitized production case studies. The repositories show the implementation; the case studies focus on architecture, operational trade-offs, rollback, observability, and security boundaries.</div>
+
+  <div class="eng-group-title">Public Engineering Labs</div>
+  <div class="eng-grid">
+    <article class="eng-card fi">
+      <div class="eng-kicker">Platform Engineering · Current Flagship</div>
+      <div class="eng-title">AWS EKS GitOps Platform</div>
+      <div class="eng-desc">Terraform-managed AWS VPC/EKS platform with private-first cluster access, Argo CD GitOps, hardened Kubernetes manifests, gp3 storage, Prometheus/Grafana, Dependabot, secret scanning, and CI security gates.</div>
+      <div class="proj-stack"><span class="proj-tag">Terraform</span><span class="proj-tag">EKS</span><span class="proj-tag">Argo CD</span><span class="proj-tag">Trivy</span><span class="proj-tag">Prometheus</span><span class="proj-tag">Grafana</span></div>
+      <div class="eng-actions"><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/platform-engineering-eks-gitops#architecture">View Architecture ↗</a><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/platform-engineering-eks-gitops">GitHub Repository ↗</a></div>
+    </article>
+    <article class="eng-card fi">
+      <div class="eng-kicker">DevSecOps · Reference Release v1.0.0</div>
+      <div class="eng-title">MIND DevSecOps Platform</div>
+      <div class="eng-desc">End-to-end pipeline combining Jenkins, Gitleaks, SonarQube, Docker, Trivy, Argo CD, K3s, CodeQL, PostgreSQL and observability, with public architecture evidence separated from private control-plane access.</div>
+      <div class="proj-stack"><span class="proj-tag">Jenkins</span><span class="proj-tag">K3s</span><span class="proj-tag">Docker</span><span class="proj-tag">CodeQL</span><span class="proj-tag">SonarQube</span><span class="proj-tag">Argo CD</span></div>
+      <div class="eng-actions"><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/depi-mind-app-v2#architecture-at-a-glance">View Architecture ↗</a><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/depi-mind-app-v2">GitHub Repository ↗</a></div>
+    </article>
+    <article class="eng-card fi">
+      <div class="eng-kicker">Infrastructure as Code</div>
+      <div class="eng-title">AWS EKS Infrastructure v2</div>
+      <div class="eng-desc">Modular Terraform infrastructure covering VPC, IAM, security groups, EKS and managed nodes, backed by Terraform formatting/validation CI and sanitized local-variable examples.</div>
+      <div class="proj-stack"><span class="proj-tag">AWS</span><span class="proj-tag">Terraform</span><span class="proj-tag">EKS</span><span class="proj-tag">IAM</span><span class="proj-tag">VPC</span><span class="proj-tag">Jenkins</span></div>
+      <div class="eng-actions"><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/depi-helloapp-infra-v2#architecture">View Architecture ↗</a><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/depi-helloapp-infra-v2">GitHub Repository ↗</a></div>
+    </article>
+    <article class="eng-card fi">
+      <div class="eng-kicker">Configuration Management</div>
+      <div class="eng-title">Multi-EC2 Ansible Automation</div>
+      <div class="eng-desc">Role-based Ansible automation for a split application/database AWS EC2 architecture with Nginx, service management, repeatable deployment, backup automation, and CI syntax validation.</div>
+      <div class="proj-stack"><span class="proj-tag">Ansible</span><span class="proj-tag">AWS EC2</span><span class="proj-tag">Nginx</span><span class="proj-tag">Flask</span><span class="proj-tag">MariaDB</span></div>
+      <div class="eng-actions"><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/notesapp-multi-ec2-ansible#-architecture-overview">View Architecture ↗</a><a class="eng-link" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/notesapp-multi-ec2-ansible">GitHub Repository ↗</a></div>
+    </article>
+  </div>
+
+  <div class="eng-group-title">Sanitized Production Case Studies</div>
+  <div class="case-grid">
+    <a class="case-card fi" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/fadyy2k/blob/main/CASE_STUDIES.md#1-multi-tenant-saas-vps-platform"><div class="case-label">Production Pattern</div><div class="case-title">Multi-tenant SaaS VPS Platform</div><div class="case-copy">Nginx, process isolation, databases, CI/CD, monitoring, backups, capacity and rollback lessons.</div></a>
+    <a class="case-card fi" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/fadyy2k/blob/main/CASE_STUDIES.md#2-cross-site-postgresql-replication-over-private-overlay-networking"><div class="case-label">Data Reliability</div><div class="case-title">Cross-site PostgreSQL Replication</div><div class="case-copy">Private overlay networking, replication health, WAL/slot monitoring, schema drift and failback planning.</div></a>
+    <a class="case-card fi" target="_blank" rel="noopener noreferrer" href="https://github.com/fadyy2k/fadyy2k/blob/main/CASE_STUDIES.md#3-cloud-migration-with-dns-based-rollback"><div class="case-label">Migration</div><div class="case-title">Cloud Migration + DNS Rollback</div><div class="case-copy">Replication-first cutover, dependency validation, DNS TTL control and a fast rollback window.</div></a>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
 <!-- FREELANCE & SERVICES -->
 <section id="services"><div class="sw">
-  <div class="sl">03 — Freelance & Projects</div><h2>Services & Project Work</h2>
+  <div class="sl">04 — Client & Freelance Work</div><h2>Client & Freelance Projects</h2>
 
   <div class="services-intro">
     <div class="services-lead">
-      Beyond my full-time role, I take on select freelance and consulting engagements — from cloud infrastructure builds and DevOps automation to full-stack dashboards and AI-powered tools. These are real projects I've shipped, not demos.
+      Selected client and freelance engagements covering infrastructure, DevOps automation, dashboards, web applications, continuity planning, and specialized systems. Public engineering labs are separated above from delivered project work.
     </div>
     <div class="services-cta-box">
       <div class="services-cta-title">Got a project in mind?</div>
@@ -426,6 +586,7 @@
     </div>
   </div>
 
+  <div class="section-subtitle">Delivered Engagements</div>
   <div class="proj-grid">
 
     <div class="proj-card devops fi">
@@ -556,7 +717,7 @@
 
 <!-- CERTIFICATIONS — COMPLETE FROM CREDLY TRANSCRIPT -->
 <section id="certifications"><div class="sw">
-  <div class="sl">03 — Credentials</div><h2>Certifications & Badges</h2>
+  <div class="sl">05 — Credentials</div><h2>Certifications & Badges</h2>
 
   <!-- AWS -->
   <div class="cert-group">
@@ -638,7 +799,7 @@
   <div class="cert-group">
     <div class="cert-group-title">Google</div>
     <div class="cg">
-      <div class="cc fi"><div class="cl"><img src="https://images.credly.com/size/80x80/images/ae2f5bae-b110-4ea1-8e26-77cf5f76c81e/GCC_badge_IT_Support_1000x1000.png" alt="Google IT" onerror="this.style.display='none';this.parentNode.className+=' fb ico-google';this.parentNode.innerHTML='<svg width=24 height=24 viewBox=&quot;0 0 24 24&quot;><path fill=&quot;#4285F4&quot; d=&quot;M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z&quot;/><path fill=&quot;#34A853&quot; d=&quot;M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z&quot;/><path fill=&quot;#FBBC05&quot; d=&quot;M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z&quot;/><path fill=&quot;#EA4335&quot; d=&quot;M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z&quot;/></svg>'"/></div><div><div class="cn">Google IT Support Professional Certificate</div><div class="cm"><span class="ci">Google / Coursera</span><span class="cbadge ace">ACE Endorsed</span></div></div></div>
+      <div class="cc fi"><div class="cl"><img loading="lazy" decoding="async" src="https://images.credly.com/size/80x80/images/ae2f5bae-b110-4ea1-8e26-77cf5f76c81e/GCC_badge_IT_Support_1000x1000.png" alt="Google IT" onerror="this.style.display='none';this.parentNode.className+=' fb ico-google';this.parentNode.innerHTML='<svg width=24 height=24 viewBox=&quot;0 0 24 24&quot;><path fill=&quot;#4285F4&quot; d=&quot;M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z&quot;/><path fill=&quot;#34A853&quot; d=&quot;M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z&quot;/><path fill=&quot;#FBBC05&quot; d=&quot;M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z&quot;/><path fill=&quot;#EA4335&quot; d=&quot;M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z&quot;/></svg>'"/></div><div><div class="cn">Google IT Support Professional Certificate</div><div class="cm"><span class="ci">Google / Coursera</span><span class="cbadge ace">ACE Endorsed</span></div></div></div>
       <div class="cc fi"><div class="cl ico-google"><svg viewBox="0 0 24 24" width="28" height="28"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></div><div><div class="cn">Security in Google Cloud Specialization</div><div class="cm"><span class="ci">Google Cloud / Coursera</span></div></div></div>
     </div>
   </div>
@@ -658,7 +819,7 @@
 
 <!-- EDUCATION -->
 <section id="education"><div class="sw">
-  <div class="sl">04 — Academic Background</div><h2>Education</h2>
+  <div class="sl">06 — Academic Background</div><h2>Education</h2>
   <div class="eg">
     <div class="ec fi"><div class="ei">🎓</div><div class="ed">Post Graduate Diploma — AI & Modern Technologies</div><div class="es">National Telecommunication Institute (NTI) · Cairo</div><div class="ep">2021 – 2023 · 60 ECTS · EQF Level 7</div><div class="ebs"><span class="eb gold">🏅 Distinction</span><span class="eb green">EQF Level 7</span><span class="eb blue">60 ECTS</span></div><div class="et">Thesis: HPC Optimization — AI-driven solution enhancing computational efficiency by 30%</div></div>
     <div class="ec fi"><div class="ei">⚙️</div><div class="ed">B.Sc. Computer Engineering</div><div class="es">Higher Institute for Engineering · Alexandria</div><div class="ep">2009 – 2013 · 240 ECTS · EQF Level 6</div><div class="ebs"><span class="eb blue">Grade: B+</span><span class="eb green">EQF Level 6</span><span class="eb blue">240 ECTS</span></div><div class="et">Thesis: Unmanned Vehicle — Autonomous system with embedded controls and automation</div></div>
@@ -669,7 +830,7 @@
 
 <!-- CONTACT — PREMIUM -->
 <section id="contact"><div class="sw">
-  <div class="sl">05 — Let's Connect</div><h2>Contact</h2>
+  <div class="sl">07 — Let's Connect</div><h2>Contact</h2>
 
   <div class="contact-hero fi">
     <div class="contact-hero-title">Open to New Opportunities</div>
@@ -693,13 +854,19 @@
       </div>
       <div><div class="cc-label">Phone</div><div class="cc-val">+20 12 2680 0676</div></div>
     </a>
-    <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank" class="contact-card fi">
+    <a href="https://github.com/fadyy2k" target="_blank" rel="noopener noreferrer" class="contact-card fi">
+      <div class="cc-icon" style="background:rgba(255,255,255,0.08)">
+        <svg viewBox="0 0 24 24" fill="#e2e8f0" width="20" height="20"><path d="M12 .7a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.56v-2.24c-3.22.7-3.9-1.36-3.9-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.72 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.16 1.19A10.95 10.95 0 0112 6.05c.98 0 1.96.13 2.88.39 2.19-1.5 3.16-1.19 3.16-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.44-2.71 5.42-5.29 5.71.42.36.79 1.07.79 2.16v3.25c0 .31.21.67.8.56A11.5 11.5 0 0012 .7z"/></svg>
+      </div>
+      <div><div class="cc-label">GitHub</div><div class="cc-val">github.com/fadyy2k</div></div>
+    </a>
+    <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank" rel="noopener noreferrer" class="contact-card fi">
       <div class="cc-icon" style="background:rgba(10,102,194,0.12)">
         <svg viewBox="0 0 24 24" fill="#7cb9f4" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </div>
       <div><div class="cc-label">LinkedIn</div><div class="cc-val">fady-mounir-601331b6</div></div>
     </a>
-    <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank" class="contact-card fi">
+    <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank" rel="noopener noreferrer" class="contact-card fi">
       <div class="cc-icon" style="background:rgba(255,107,0,0.1)">
         <svg viewBox="0 0 24 24" fill="#fdba74" width="20" height="20"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5a7.5 7.5 0 110 15 7.5 7.5 0 010-15zm0 2.25a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zm0 2.25a3 3 0 110 6 3 3 0 010-6z"/></svg>
       </div>
@@ -728,26 +895,45 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-left">© 2026 <span>Fady Mounir Zaghloul</span> · IT & Security Manager · Cairo, Egypt</div>
+  <div class="footer-left">© 2026 <span>Fady Mounir Zaghloul</span> · IT & Security · Platform & Infrastructure Engineering</div>
   <div class="footer-links">
     <a href="mailto:fadyy2k@gmail.com">Email</a>
-    <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank">LinkedIn</a>
-    <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank">Credly</a>
+    <a href="https://github.com/fadyy2k" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/fady-mounir-601331b6/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://www.credly.com/users/fady-mounir-zaghloul" target="_blank" rel="noopener noreferrer">Credly</a>
   </div>
 </footer>
 
 <script>
   // Cursor glow
   const g = document.getElementById('cglow');
-  document.addEventListener('mousemove', e => { g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; });
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (g && !reducedMotion) document.addEventListener('mousemove', e => { g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; });
+
+  // Mobile navigation
+  const nav = document.querySelector('nav');
+  const menuToggle = document.querySelector('.menu-toggle');
+  menuToggle?.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuToggle?.setAttribute('aria-expanded','false');
+  }));
 
   // Scroll animations
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e,i) => {
-      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('v'), i*55); obs.unobserve(e.target); }
-    });
-  },{threshold:0.06});
-  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+  if (reducedMotion) {
+    document.querySelectorAll('.fi').forEach(el=>el.classList.add('v'));
+  } else {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e,i) => {
+        if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('v'), i*55); obs.unobserve(e.target); }
+      });
+    },{threshold:0.06});
+    document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+  }
 
   // Active nav link highlight
   const sections = document.querySelectorAll('section[id]');

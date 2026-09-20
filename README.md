@@ -1,15 +1,28 @@
 # Fady Mounir Zaghloul — Engineering Portfolio
 
+[![Portfolio Quality](https://github.com/fadyy2k/portfolio/actions/workflows/quality.yml/badge.svg)](https://github.com/fadyy2k/portfolio/actions/workflows/quality.yml)
 [![Deploy portfolio to GitHub Pages](https://github.com/fadyy2k/portfolio/actions/workflows/pages.yml/badge.svg)](https://github.com/fadyy2k/portfolio/actions/workflows/pages.yml)
 
-Static engineering portfolio focused on infrastructure, DevOps, security, cloud architecture, and production operations.
+Interactive engineering portfolio focused on **infrastructure, platform engineering, DevOps, cybersecurity, cloud architecture, and production operations**.
 
-## Stack
+## Highlights
 
-- Single-page static HTML/CSS/JavaScript
-- Responsive dark UI
-- Animated engineering-focused presentation
-- Deployable with GitHub Pages
+- Animated engineering-first hero and infrastructure flow
+- Featured public engineering labs with direct architecture/repository links
+- Sanitized production case studies separated from client/freelance work
+- Career history, technical skills, certifications, and education
+- Responsive mobile navigation and reduced-motion support
+- GitHub, LinkedIn, Credly, and contact integration
+- Open Graph/Twitter social preview metadata and JSON-LD person schema
+- Favicon, `robots.txt`, and `sitemap.xml`
+- Automated static quality checks plus GitHub Pages deployment
+
+## Featured Engineering
+
+- [Platform Engineering — AWS EKS GitOps](https://github.com/fadyy2k/platform-engineering-eks-gitops)
+- [MIND DevSecOps Platform](https://github.com/fadyy2k/depi-mind-app-v2)
+- [AWS EKS Infrastructure v2](https://github.com/fadyy2k/depi-helloapp-infra-v2)
+- [Multi-EC2 Ansible Automation](https://github.com/fadyy2k/notesapp-multi-ec2-ansible)
 
 ## Local Preview
 
@@ -17,16 +30,24 @@ Static engineering portfolio focused on infrastructure, DevOps, security, cloud 
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Open `http://localhost:8000`.
+
+Run the structural checks with:
+
+```bash
+python scripts/check_site.py
+```
 
 ## Deployment
 
-This repository includes a GitHub Pages workflow that publishes `index.html` from the repository root.
-
-Public URL after Pages is enabled:
+GitHub Actions publishes the repository to:
 
 **https://fadyy2k.github.io/portfolio/**
 
 ## Security
 
-This is a public portfolio. Do not place production endpoints, credentials, private documents, customer data, or internal network details in the page source.
+This is a public portfolio. Production endpoints, credentials, customer/company data, private network details, and authenticated operational screenshots must not be committed.
+
+## License
+
+MIT
