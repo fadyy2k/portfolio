@@ -8,16 +8,16 @@ Interactive engineering portfolio focused on **infrastructure, platform engineer
 ## Highlights
 
 - Two-column engineering hero with live terminal-style platform summary
-- Engineering-first information architecture: flagship → labs → case studies → experience
+- Engineering-first information architecture: flagship → dedicated projects hub → case studies → experience
 - Sanitized production case studies separated from client/freelance work
 - Career history, technical skills, certifications, and education
-- Responsive bento project layout, mobile navigation, scroll reveal and reduced-motion support
+- Responsive bento project layout plus a filterable Projects hub, mobile navigation, scroll reveal and reduced-motion support
 - Open-source contribution, GitHub, LinkedIn, Credly and contact integration
 - Open Graph/Twitter social preview metadata and JSON-LD person schema
 - Favicon, `robots.txt`, and `sitemap.xml`
 - Automated static quality checks plus native GitHub Pages deployment from `main`
 
-## Featured Engineering
+## Projects Hub\n\nThe site includes a dedicated curated project map at **/projects.html**, separating maintained public engineering evidence from archived exercises and private commercial repositories.\n\n## Featured Engineering
 
 - [Platform Engineering — AWS EKS GitOps](https://github.com/fadyy2k/platform-engineering-eks-gitops)
 - [MIND DevSecOps Platform](https://github.com/fadyy2k/depi-mind-app-v2)
