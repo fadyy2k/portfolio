@@ -14,3 +14,15 @@ sections.forEach(s=>spy.observe(s));
 document.querySelectorAll('.card').forEach(card=>card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',`${e.clientX-r.left}px`);card.style.setProperty('--my',`${e.clientY-r.top}px`);}));
 
 document.querySelector('[data-year]').textContent=new Date().getFullYear();
+
+
+const projectFilters=[...document.querySelectorAll('[data-project-filter]')];
+const projectCards=[...document.querySelectorAll('[data-project-tags]')];
+projectFilters.forEach(button=>button.addEventListener('click',()=>{
+  const filter=button.dataset.projectFilter;
+  projectFilters.forEach(b=>b.classList.toggle('active',b===button));
+  projectCards.forEach(card=>{
+    const tags=(card.dataset.projectTags||'').split(/\s+/);
+    card.classList.toggle('filtered-out',filter!=='all'&&!tags.includes(filter));
+  });
+}));
